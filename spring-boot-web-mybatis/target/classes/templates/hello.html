@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>这是一个springboot，thymeleaf测试html</h1>
+    <div th:text="${msg}"></div>
+    <div th:utext="${msg}"></div>
+
+<!--<h3 th:each="user:${list}">[[${user}]]</h3>-->
+<!--    两种写法都可以，建议下面一种，前后端分离-->
+<div th:each="user:${list}" th:text="${user}"></div>
+</body>
+</html>

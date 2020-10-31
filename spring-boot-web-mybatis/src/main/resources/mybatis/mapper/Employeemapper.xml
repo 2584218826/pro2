@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.xjt.springboot.mapper.EmployeeController">
+    <select id="getEmployeeList" resultMap="e">
+        select
+         e.id eid,
+         e.lastName el,
+         e.email ee,
+         e.gender eg,
+         e.department ed,
+         d.id did,
+        d.departmentName dn,
+        e.birth eb
+        from
+         employee e
+         ,department d
+        where e.department=d.id
+    </select>
+    
+    <resultMap id="e" type="cn.xjt.springboot.entities.Employee">
+        <result property="id" column="eid"/>
+        <result property="lastName" column="el"/>
+        <result property="email" column="ee"/>
+        <result property="gender" column="eg"/>
+        <result property="birth" column="eb"/>
+        <result property="department" column="ed"/>
+<!--        <association property="departments" javaType="cn.xjt.springboot.entities.Department">-->
+<!--            <result property="id" column="did"/>-->
+<!--            <result property="departmentName" column="dn"/>-->
+<!--        </association>-->
+
+    </resultMap>
+    
+    <select id="getEmployeeByid" resultType="cn.xjt.springboot.entities.Employee">
+        select * from employee where id=#{id};
+    </select>
+
+    <update id="updateEmployee" parameterType="cn.xjt.springboot.entities.Employee" >
+        update employee set lastName=#{lastName},email=#{email},
+        gender=#{gender},department=#{department},birth=#{birth} where id=#{id}
+    </update>
+
+    <insert id="addEmployee" parameterType="cn.xjt.springboot.entities.Employee">
+        insert into employee(id,lastName,email,gender,department,birth) values
+        (#{id},#{lastName},#{email},#{gender},#{department},#{birth})
+    </insert>
+
+    <delete id="deleteEmployee" parameterType="int">
+        delete from employee where id=#{id}
+    </delete>
+</mapper>

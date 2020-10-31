@@ -1,0 +1,33 @@
+person:
+  name: 徐江涛
+  age: 18
+  id: ${random.int}
+  hobby:
+    -study
+    -swim
+    -run
+  map: {k1: va,k2: v2}
+  pet: [dog,cat,tiger]
+  dog:
+    name: dog
+    age: 12
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 13456979826a
+    url: jdbc:mysql://localhost:3306/employeemanager?useSLL=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+  thymeleaf:
+    cache: false
+  mvc:
+    favicon:
+      enabled: false
+    format:
+      date: yyyy-MM-dd HH-mm
+  messages:
+    basename: i18n.login
+
+mybatis:
+  type-aliases-package: cn.xjt.springboot.entities
+  mapper-locations: classpath:mybatis/mapper/*.xml
+
